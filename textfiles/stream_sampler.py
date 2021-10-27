@@ -30,6 +30,10 @@ if __name__ == "__main__":
   ap.add_argument("files", nargs="*", help="Files (plain/gz/bz2) to sample lines from (reads from the STDIN, if empty or '-')")
   args = ap.parse_args()
 
+  if os.isatty(sys.stdin.fileno()) and not args.files:
+    ap.print_help(file=sys.stderr)
+    sys.exit()
+
   size = int(args.number)
   ss = StreamSampler(size)
 
