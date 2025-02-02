@@ -50,7 +50,7 @@ def check_http_status(url, maxrdr=10, tout=(10, 30)):
     vst = "Connection_Error"
     finst = -1
 
-  return vst, rdrct, initst, finst, url, finurl
+  return vst or finst, rdrct, initst, finst, url, finurl
 
 
 def main():
